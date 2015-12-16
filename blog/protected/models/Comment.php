@@ -28,6 +28,12 @@ class Comment extends CActiveRecord
 	{
 		return '{{comment}}';
 	}
+	
+	public function approve()
+	{
+		$this->status=Comment::STATUS_APPROVED;
+		$this->update(array('status'));
+	}
 
 	protected function beforeSave()
 	{
