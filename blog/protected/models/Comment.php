@@ -89,6 +89,18 @@ class Comment extends CActiveRecord
 			'post_id' => 'Post',
 		);
 	}
+	
+	public function getPendingCommentCount()
+	{
+		return $this->count('status='.self::STATUS_PENDING);
+	}
+	
+	public function getUrl($post=null)
+	{
+		if($post===null)
+			$post=$this->post;
+		return $post->url.'#c'.$this->id;
+	}
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.

@@ -21,8 +21,3 @@ $this->menu=array(
     'itemView'=>'_view',
     'template'=>"{items}\n{pager}",
 )); ?>
-
-<?php $this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$dataProvider,
-	'itemView'=>'_view',
-)); ?>
