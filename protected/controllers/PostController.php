@@ -147,12 +147,7 @@ class PostController extends Controller
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 	}
-	protected function afterDelete()
-	{
-		parent::afterDelete();
-		Comment::model()->deleteAll('post_id='.$this->id);
-		Tag::model()->updateFrequency($this->tags, '');
-	}
+
 
 	/**
 	 * Lists all models.

@@ -29,6 +29,13 @@ class Post extends CActiveRecord
 	{
 		return '{{post}}';
 	}
+	
+	protected function afterDelete()
+	{
+		parent::afterDelete();
+		Comment::model()->deleteAll('post_id='.$this->id);
+		Tag::model()->updateFrequency($this->tags, '');
+	}
 
 	public function addComment($comment)
 	{
